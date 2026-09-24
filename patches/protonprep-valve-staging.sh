@@ -500,21 +500,21 @@ apply_all_in_dir() {
     echo "WINE: implement IOCTL_SERIAL_GET_DTRRTS (Qt serial device tools, e.g. MOZA Cockpit)"
     apply_patch "../patches/proton/0001-ntdll-Implement-IOCTL_SERIAL_GET_DTRRTS-for-serial-dev.patch"
 
-    echo "WINE: -HOTFIX- Implement GE-Proton ffmpeg + winedmo only video playback rework patches"
-    apply_all_in_dir "../patches/ge-video-rework/"
+#     echo "WINE: -HOTFIX- Implement GE-Proton ffmpeg + winedmo only video playback rework patches"
+#     apply_all_in_dir "../patches/ge-video-rework/"
 
     # https://github.com/xzn/proton-ds5-haptic
     # Includes default VitaPad-to-DS4 translation (issue #691).
-    echo "WINE: -HOTFIX- Add proton DS5 patches"
-    for patch in ../patches/proton-ds5-haptic/*.patch; do
-        apply_patch "$patch"
-    done
+#     echo "WINE: -HOTFIX- Add proton DS5 patches"
+#     for patch in ../patches/proton-ds5-haptic/*.patch; do
+#         apply_patch "$patch"
+#     done
 
-    echo "WINE: expose mapped Switch Pro controllers as Xbox when Steam Input is disabled"
-    apply_patch "../patches/wine-hotfixes/pending/winebus-switch-pro-xinput-identity.patch"
+#     echo "WINE: expose mapped Switch Pro controllers as Xbox when Steam Input is disabled"
+#     apply_patch "../patches/wine-hotfixes/pending/winebus-switch-pro-xinput-identity.patch"
 
-    echo "WINE: expose native DualSense Edge as DualSense for Diablo IV"
-    apply_patch "../patches/wine-hotfixes/pending/winebus-diablo-iv-dualsense-edge-identity.patch"
+#     echo "WINE: expose native DualSense Edge as DualSense for Diablo IV"
+#     apply_patch "../patches/wine-hotfixes/pending/winebus-diablo-iv-dualsense-edge-identity.patch"
 
     # Bluetooth LE GATT and WinRT BLE (Zwift, Rouvy trainers). winebth.sys stays disabled
     # unless PROTON_ENABLE_WINEBTH=1. https://github.com/GloriousEggroll/proton-ge-custom/issues/814
