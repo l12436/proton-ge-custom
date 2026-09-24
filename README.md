@@ -1,3 +1,7 @@
+> [!Important]
+> Just my modify for take gstreamer back from original GE-Proton.
+> Bug report should be back to GE-Proton. I do not fix bug that is belong to GE-Proton
+
 > [!Caution]
 >  **Myself (GloriousEggroll) and this project (GE-Proton) are not affiliated with any other websites related to GE-Proton. There is no existing website for GE-Proton other than this GitHub repository.**
 
