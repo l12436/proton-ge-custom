@@ -679,7 +679,7 @@ FFMPEG_i386-unix_CONFIGURE_ARGS := \
 	--target-os=linux
 
 FFMPEG_i386-unix_CONFIGURE_ARGS += \
-	--optflags="$(CFLAGS) $(i386_CFLAGS)"
+	--optflags="$(CFLAGS) $(i386_CFLAGS) -fno-tree-vectorize"
 
 FFMPEG_x86_64-unix_CONFIGURE_ARGS := \
 	--cross-prefix=x86_64-linux-gnu- \
@@ -687,7 +687,7 @@ FFMPEG_x86_64-unix_CONFIGURE_ARGS := \
 	--target-os=linux
 
 FFMPEG_x86_64-unix_CONFIGURE_ARGS += \
-	--optflags="$(CFLAGS) $(x86_64_CFLAGS)"
+	--optflags="$(CFLAGS) $(x86_64_CFLAGS) -fno-tree-vectorize"
 
 FFMPEG_aarch64-unix_CONFIGURE_ARGS := \
 	--cross-prefix=aarch64-linux-gnu- \
