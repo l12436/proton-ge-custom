@@ -48,6 +48,13 @@ apply_all_in_dir() {
     git clean -xdf
     popd
 
+    pushd gstreamer
+    git reset --hard HEAD
+    git clean -xdf
+    echo "GSTREAMER: fix for unclosable invisible wayland opengl windows in taskbar"
+    apply_all_in_dir "../patches/gstreamer/"
+    popd
+
     pushd protonfixes
     git reset --hard HEAD
     git clean -xdf
@@ -426,6 +433,10 @@ apply_all_in_dir() {
     echo "WINE: -PENDING-  Import upstream icuu forwarders patches to fix broken GoW2Hollow_Setup.exe for Gears of War 2 Hollow"
     apply_patch "../patches/wine-hotfixes/pending/icuuc-icuin-forwarder-dlls.patch"
 
+    # https://github.com/StephenCWills/wine/commits/akiba/
+    # https://github.com/ValveSoftware/Proton/issues/651#issuecomment-3564552601
+    echo "WINE: -PENDING- add akibas trip undead & undressed patches"
+    apply_patch "../patches/wine-hotfixes/pending/akibastrip-video-voice.patch"
 
     # Separate OpenXR steam reliance
     # https://github.com/GloriousEggroll/proton-ge-custom/issues/214
@@ -456,12 +467,24 @@ apply_all_in_dir() {
     echo "WINE: -CUSTOM- Add nls to tools"
     apply_patch "../patches/proton/build_failure_prevention-add-nls.patch"
 
+    echo "WINE: -CUSTOM Add options to disable proton media converter."
+    apply_patch "../patches/proton/add-envvar-to-gate-media-converter.patch"
+
     echo "WINE: -CUSTOM- Add WINE_NO_WM_DECORATION option to disable window decorations so that borders behave properly"
     apply_patch "../patches/proton/0001-win32u-add-env-switch-to-disable-wm-decorations.patch"
+
+    echo "WINE: -CUSTOM- Add envvar to allow method=automatic to be set for video orientation in gstreamer"
+    apply_patch "../patches/proton/proton-use_winegstreamer_and_set_orientation-PROTON_MEDIA_USE_GST-PROTON_GST_VIDEO_ORIENTATION.patch"
 
     # https://steamcommunity.com/app/2074920/discussions/0/604168604057160448/
     echo "WINE: --CUSTOM-- add WINE_HOSTBLOCK envvar to allow working around some problematic anticheats (notably eac)"
     apply_patch "../patches/proton/wine_host_block_envvar.patch"
+
+    echo "WINE: -CUSTOM- Dynamically relocate .exes, improving compatibility with modding / hooking tools"
+    apply_patch "../patches/proton/0001-server-Dynamically-relocate-.exes-by-default-too.patch"
+
+    echo "WINE: -CUSTOM- Nukitashi 2 video playback fix"
+    apply_patch "../patches/wine-hotfixes/ge_video_fixes/nukitashi2-video-fix.patch"
 
     echo "WINE: mutter -> cinnamon detection patch for winex11"
     apply_patch "../patches/proton/winex11-mutter-cinnamon.patch"
